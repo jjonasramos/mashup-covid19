@@ -1,0 +1,749 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+
+body {
+	font: 400 14px Roboto, sans-serif;
+    background-color: #fafafa;
+    -webkit-font-smoothing: antialiased;
+}
+
+.content-ng {
+	display: flex;
+	width: 100%;
+}
+
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.content {
+	display: flex;
+	padding: 55px 0 12px 0;
+	height: 100vh;
+	width: 100%;
+}
+
+.content-middle, .content-left {
+	display: flex;
+}
+
+.content-left {
+	width: 20vw;
+	height: 100%;
+}
+
+.content-middle {
+	width: 59vw;
+	padding: 0 4px;
+	flex-direction: column;
+}
+
+.content-middle > div + div {
+	margin-top: 4px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.content-right {
+	width: 21vw;
+}
+
+#loading {
+	background: white;
+    width: 100%;
+    position: absolute;
+    z-index: 9999999;
+    height: 100vh;
+	overflow-y: hidden;
+    opacity: 0.95;
+	display: flex;
+	justify-content: space-between;
+	padding: 80px;
+	flex-direction: column;
+	align-items: center;
+	transition: opacity 1s ease-in-out;
+}
+
+#loading > div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#loading > div > span {
+	margin-top: 36px;
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.sk-chase {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  animation: sk-chase 2.5s infinite linear both;
+}
+
+.sk-chase-dot {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0; 
+  animation: sk-chase-dot 2.0s infinite ease-in-out both; 
+}
+
+.sk-chase-dot:before {
+  content: '';
+  display: block;
+  width: 25%;
+  height: 25%;
+  background-color: black;
+  border-radius: 100%;
+  animation: sk-chase-dot-before 2.0s infinite ease-in-out both; 
+}
+
+.sk-chase-dot:nth-child(1) { animation-delay: -1.1s; }
+.sk-chase-dot:nth-child(2) { animation-delay: -1.0s; }
+.sk-chase-dot:nth-child(3) { animation-delay: -0.9s; }
+.sk-chase-dot:nth-child(4) { animation-delay: -0.8s; }
+.sk-chase-dot:nth-child(5) { animation-delay: -0.7s; }
+.sk-chase-dot:nth-child(6) { animation-delay: -0.6s; }
+.sk-chase-dot:nth-child(1):before { animation-delay: -1.1s; }
+.sk-chase-dot:nth-child(2):before { animation-delay: -1.0s; }
+.sk-chase-dot:nth-child(3):before { animation-delay: -0.9s; }
+.sk-chase-dot:nth-child(4):before { animation-delay: -0.8s; }
+.sk-chase-dot:nth-child(5):before { animation-delay: -0.7s; }
+.sk-chase-dot:nth-child(6):before { animation-delay: -0.6s; }
+
+@keyframes sk-chase {
+  100% { transform: rotate(360deg); } 
+}
+
+@keyframes sk-chase-dot {
+  80%, 100% { transform: rotate(360deg); } 
+}
+
+@keyframes sk-chase-dot-before {
+  50% {
+    transform: scale(0.4); 
+  } 100%, 0% {
+    transform: scale(1.0); 
+  } 
+}
+
+/* =================== Info =================== */
+
+.isSelected {
+	background: red !important;
+}
+
+.btn-active {
+	background-image: linear-gradient(to right, #00b4db, #0083b0) !important;
+	color: white !important;
+}
+
+.card-custom {
+	padding: 14px;
+	border-radius: 8px;
+}
+
+.info {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.mapa {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	/*justify-content: space-between;*/
+	align-items: center;
+	background-color: white;
+	padding: 14px 0 0 0;
+}
+
+.info-value {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fa-vc {
+	line-height: inherit !important;
+	padding: 10px 4px 0 0;
+    font-size: 20px;
+}
+
+.fa-vc-down {
+	line-height: inherit !important;
+	padding: 0 4px 10px 0;
+    font-size: 20px;
+}
+
+.info-circle {
+	background-color: white;
+	width: 100%;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 8px;
+}
+
+.info-circle > div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.info-circle > span + span {
+	font-weight: 700;
+	font-size: calc((.4em + 2vmin) + (.4em + 2vmax));
+}
+
+.info-circle > span  {
+	font-weight: 400;
+	font-size: 15px;
+}
+
+.info-circle > span + div {
+	font-weight: 700;
+	font-size: calc((.4em + .2vmin) + (.4em + .2vmax));
+	color: #e02041
+}
+
+.info-circle-value {
+	background: linear-gradient(to bottom right, #FFEFBA, #FFFFFF);
+	height: 100%;
+	width: 100%;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	font-size: 30px;
+	color: black;
+	box-shadow: 0px 10px 6px -6px lightgray;
+}
+
+.info-health {
+	margin: 12px 0px;
+	width: 100%;
+}
+
+.info-group-health > div {
+	display: flex; 
+	align-items: center;
+	cursor: pointer;
+	transition: transform 0.25s ease-in-out;
+}
+
+.info-group-health > div:hover {
+	transform: scale(1.05);
+}
+
+.info-group-health-v > span {
+	font-weight: 700; 
+	font-size: calc((.4em + .4vmin) + (.4em + .4vmax)); 
+	text-align: center;
+	margin-right: 14px;
+}
+
+
+
+.info-health-values > span {
+	font-weight: 700;
+	font-size: 15px;
+}
+
+.info-health-values > span + span {
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.info-health-values {
+	display: flex;
+	justify-content: space-between;
+}
+
+.info-health-bar {
+	background-color: #ededed;
+	height: 8px;
+	transition: width 0.25s ease-in-out;
+}
+
+.info-health-bar, .info-health-bar > div {
+	border-radius: 20px;
+	margin-top: 6px;
+}
+
+.info-group-health-v {
+	min-width: 60px;
+	display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.info-health-bar > div {
+	height: 100%;
+	width: 0%;
+	transition: width 0.25s ease-in-out;
+}
+
+.red {
+	color: #e02041;
+}
+
+.red-bar {
+	background-color: #e02041;
+}
+
+.orange {
+	color: #ff6d33;
+}
+
+.orange-bar {
+	background-color: #ff6d33;
+}
+
+.blue {
+	color: #3486eb;
+}
+
+.blue-bar {
+	background-color: #3486eb;
+}
+
+.gray {
+	color: gray;
+}
+
+.gray-bar {
+	background-color: gray;
+}
+
+.green {
+	color: #4eba6b;
+}
+
+.green-bar  {
+	background-color: #4eba6b;
+}
+
+.black {
+	color: black;
+}
+
+.black-bar {
+	background-color: black;
+}
+
+.info-age {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.info-age > img {
+	max-width: 20%;
+}
+.info-age > div + img {
+	max-width: 18%;
+	opacity: 0.9;
+}
+
+.info-age > div {
+	display: flex;
+	width: 100%;
+}
+
+.info-age > div > div {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.info-age > div > div > span {
+	font-size: 180%;
+	font-weight: 700;
+}
+
+.info-age > div > div > span + span {
+	font-size: 100%;
+	font-weight: 400;
+	margin-top: 8px;
+}
+
+/* ================ MENU SUPERIOR ============*/
+.menu {
+	position: fixed;
+	top: 0;
+	background: #1a62aa;
+	z-index: 9999;
+	width: 100%;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	color: white;
+}
+
+.menu > span {
+	font-size: calc((.4em + .3vmin) + (.4em + .3vmax)) !important;
+}
+
+.menu > div {
+	display: flex;
+	align-items: center;
+}
+
+.menu > div > span {
+	font-size: 15px;
+	text-align: end;
+}
+
+.btn-up {
+	margin-right: 20px;
+}
+
+.btn-up > a {
+	color: white;
+	transition: opacity .15s ease-in-out;
+	text-decoration: none;
+}
+
+.btn-up > a:hover {
+	opacity: 0.8;
+}
+
+.btn-label {
+	margin-left: 3px;
+}
+
+.logo02-box {
+	display: flex;
+}
+
+.logo02-box > span {
+	font-size: 16px;
+	text-align: right;
+	color: white;
+}
+
+#nav-divider {
+	height: 36px;
+	width: 2px;
+	background-color: white;
+	margin: 4px 12px;
+	border-radius: 8px;
+	opacity: 0.5;
+}
+
+/* =============================== */
+
+.button {
+	height: 30px;
+	width: 120px;
+	border: none;
+	background-image: linear-gradient(to bottom right, #ddd, lightgrey);
+	border-radius: 4px;
+	margin: 18px;
+	font-weight: 700;
+	color: black;
+	box-shadow: 0 8px 6px -6px #ddd;
+	transition: transform 0.25s ease-in-out;
+}
+
+.button:hover {
+	transform: scale(1.05);
+}
+
+.divisor {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 14px;
+}
+
+.divisor > span {
+	height: 2px;
+	width: 80%;
+	background-color: #ededed;
+}
+
+.table-box {
+	height: 100%;
+	overflow-y: auto;
+	height: 100%; 
+	margin: 20px 0; 
+	padding-right: 12px;
+}
+
+.table-box > table {
+    overflow: auto;
+	display: table;
+}
+
+.table-box> table > tbody > tr > td > i {
+	color: red;
+}
+
+.table-box> table > tbody > tr > td {
+	vertical-align: inherit !important;
+	word-wrap: break-word !important;
+	padding: 8px 2px !important;
+}
+
+.table-box> table > tbody > tr {
+	transition: transform .2s ease-in-out;
+}
+
+.table-box> table > tbody > tr:hover {
+	transform: scale(1.05);
+	
+}
+
+.table>thead>tr>th {
+	padding: 12px;
+	text-align: center;
+	background: white;
+	border-bottom: 3px solid #fafafa;
+}
+
+.table>thead>tr>th:hover {
+	background: #fafafa;
+}
+
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
+	border-top: 3px solid #fafafa;
+}
+
+
+.table-box thead th { 
+	position: sticky; 
+	top: 0; 
+	cursor: pointer;
+}
+
+/* Just common table stuff. Really. */
+.table > table  { 
+	border-collapse: collapse; 
+	width: 100%; 
+}
+th, td { 
+	padding: 8px 16px; 
+}
+
+.header-title {
+	width: 100%;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	font-size: 18px;
+	padding: 10px 0;
+	color: gray;
+}
+
+.titleSite {
+	font-weight: 400 !important;
+	font-size: calc((.4em + .4vmin) + (.4em + .4vmax)) !important;
+}
+
+.titleSite:hover {
+	color: white !important;
+}
+
+#logoGDF {
+	height: 50px;
+	margin-left: 14px;
+}
+
+/* ============== RESPONSIVIDADE =============== */
+
+/* TABLET */
+@media only screen and (max-width: 1100px) {
+	.logo02-box, .btn-label {
+		display: none;
+	}
+}
+
+@media only screen and (max-height: 768px) {
+	.info-health-bar {
+		height: 4px;
+	}
+	
+	.divisor {
+		padding: 10px 14px;
+	}
+	
+	.info-circle {
+		padding: 0;
+	}
+	
+	.info-circle > span {
+		font-size: 13px;
+	}
+	
+	.info-circle > span + span {
+		font-size: 30px;
+	}
+	
+	#kpi-df-novos-casos {
+		font-size: 12px;
+	}
+	
+	.table-box> table > tbody > tr > td {
+		padding: 1px 0 !important;
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	.info-circle > span + div {
+		font-size: calc((.2em + .3vmin) + (.2em + .3vmax));
+	}
+	
+	.content-left {
+		width: 22vw;
+		height: 100%;
+	}
+
+	.content-middle {
+		width: 52vw;
+		padding: 0 4px;
+		flex-direction: column;
+	}
+	
+	.content-right {
+		width: 26vw;
+	}
+	
+	.table-box {
+		margin: 0 0 20px 0;
+	}
+
+}
+
+/* MOBILE */
+@media only screen and (max-width: 900px) {
+
+	.content-ng {
+		flex-direction: column;
+	}
+	
+	.content-left, .content-middle, .content-right {
+		width: 100vw;
+		height: auto;
+	}
+	
+	.menu > span {
+		width: 100%;
+	}
+	
+	.info-circle > span + span {
+		font-size: 50px;
+	}
+	
+	.info-circle > span + div {
+		font-size: calc((.4em + .2vmin) + (.4em + .2vmax));
+	}
+	
+	.divisor {
+		padding: 14px;
+	}
+	
+	.info-health-bar {
+		height: 8px;
+	}
+	
+	.info-group-health-v > span {
+		font-size: 20px;
+	}
+	
+	.menu > div {
+		width: auto;
+		justify-content: flex-end;
+	}
+	
+	#mapa-df-01, #chart-df-02, #chart-df-age {
+		height: 300px !important;
+	}
+	
+	.mapa > div + div {
+		padding: 0 10px !important;
+	}
+	
+	.table-box {
+		padding-right: 0px;
+		height: 700px !important;
+	}
+	
+	.content-right > div > div:nth-child(5) {
+		height: auto !important;
+		padding-bottom: 20px !important;
+	}
+	
+	.table-box> table > tbody > tr > td {
+		padding: 4px 2px !important;
+	}
+	
+	#loading > img {
+		width: 140px !important;
+	}
+	
+	.sk-chase {
+	  width: 50px;
+	  height: 50px;
+	}
+	
+	#loading > div > span {
+		font-size: 18px;
+	}
+}
+
+@media only screen and (max-width: 414px) {
+	.menu > span {
+		display: none;
+	}
+	
+	.menu > div {
+		width: 100%;
+	}
+}
+
+
+/* ============== QLIK =============== */
+
+
+
+.qv-object .qv-inner-object {
+	background-color: transparent !important;
+}
+
+#chart-df-age > div > article > div.qv-inner-object > header {
+	display: none;
+}
+
+#chart-df-02 > div > article > div.qv-inner-object > header {
+	display: none;
+}
