@@ -11,6 +11,35 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+
+
+
+.flexcroll{
+    scrollbar-face-color: #333;
+    scrollbar-shadow-color: #FFFFFF;
+    scrollbar-highlight-color: #FFFFFF;
+    scrollbar-3dlight-color: #FFFFFF;
+    scrollbar-darkshadow-color: #FFFFFF;
+    scrollbar-track-color: #FFFFFF;
+    scrollbar-arrow-color: #FFFFFF;
+}
+
+ 
+/* Track */
+.flexcroll::-webkit-scrollbar-track {
+    background-color: transparent;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+.flexcroll::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #eee;
+}
+
+
 .content-ng {
 	display: flex;
 	width: 100%;
@@ -41,8 +70,9 @@ body {
 
 .content-middle {
 	width: 59vw;
-	padding: 0 4px;
+	padding: 0 0 0 8px;
 	flex-direction: column;
+	overflow: auto;
 }
 
 .content-middle > div + div {
@@ -142,6 +172,109 @@ body {
 
 /* =================== Info =================== */
 
+#novos-casos-mob {
+	display: none;
+}
+
+.content-right > div > div.info-value {
+	display: flex;
+}
+
+.age-com {
+	display: flex  !important;
+	flex-direction: row !important;
+	height: 100% !important;
+	padding: 12px !important;
+}
+
+.middle-age-com-right, .middle-age-com-left {
+	width: 50%;
+	height: 400px;
+}
+
+.middle-age-com-left {
+	padding: 7.5px 20px 7.5px 12px;
+}
+
+.middle-age-com-right {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding: 20px 0;
+}
+
+.middle-age-com-left-box {
+	display: flex;
+	width: 100%;
+}
+
+.middle-age-com-left-box > div {
+	width: 50%;
+	padding: 15px;
+}
+
+.middle-age-com-right-img {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	cursor: pointer;
+	align-items: center;
+	padding: 0 190px;
+}
+.middle-age-com-right-img > img {
+	margin-bottom: 12px;
+}
+
+.middle-age-com-right-img > div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.middle-age-com-right-img > div > span {
+	font-weight: 700;
+	font-size: 180%;
+}
+
+.middle-age-com-right-img > div > span + span {
+	font-weight: 400;
+	font-size: 100%;
+	margin-top: 8px;
+}
+
+.titulo-secao {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30px;
+	font-weight: 400;
+    font-size: 15px;
+	margin: 6px 0;
+}
+
+#mobile-header, #mobile-title {
+	display: none;
+}
+
+#mobile-title {
+	color: black;
+	font-weight: 700;
+}
+
+#desktop-header {
+	display: flex;
+}
+
+.headerT {
+	flex-direction: row !important;
+	justify-content: space-between;
+	height: 5% !important;
+    padding: 0px !important;
+	font-size: 16px;
+    color: gray;
+}
+
 .isSelected {
 	background: red !important;
 }
@@ -213,7 +346,7 @@ body {
 
 .info-circle > span + span {
 	font-weight: 700;
-	font-size: calc((.4em + 2vmin) + (.4em + 2vmax));
+	font-size: calc((.3em + 1.5vmin) + (.3em + 1.5vmax));
 }
 
 .info-circle > span  {
@@ -222,8 +355,8 @@ body {
 }
 
 .info-circle > span + div {
-	font-weight: 700;
-	font-size: calc((.4em + .2vmin) + (.4em + .2vmax));
+	font-weight: 400;
+	font-size: calc((.4em + .3vmin) + (.4em + .3vmax));
 	color: #e02041
 }
 
@@ -283,7 +416,7 @@ body {
 
 .info-health-bar {
 	background-color: #ededed;
-	height: 8px;
+	height: 5px;
 	transition: width 0.25s ease-in-out;
 }
 
@@ -293,7 +426,7 @@ body {
 }
 
 .info-group-health-v {
-	min-width: 60px;
+	min-width: 75px;
 	display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -353,6 +486,14 @@ body {
 	background-color: black;
 }
 
+.purple {
+	color: #d4aae6;
+}
+
+.purple-bar {
+	background-color: #d4aae6;
+}
+
 .info-age {
 	display: flex;
 	justify-content: space-between;
@@ -392,10 +533,12 @@ body {
 }
 
 /* ================ MENU SUPERIOR ============*/
+
 .menu {
 	position: fixed;
 	top: 0;
-	background: #1a62aa;
+	/*background: #1a62aa; */
+	background-image: linear-gradient(to right, #1a62aa, white);
 	z-index: 9999;
 	width: 100%;
 	height: 50px;
@@ -425,9 +568,11 @@ body {
 }
 
 .btn-up > a {
-	color: white;
+	/*color: white;*/
 	transition: opacity .15s ease-in-out;
 	text-decoration: none;
+	color: #1a62aa;
+	font-weight: 700;
 }
 
 .btn-up > a:hover {
@@ -443,9 +588,10 @@ body {
 }
 
 .logo02-box > span {
-	font-size: 16px;
+	font-size: 15px;
 	text-align: right;
-	color: white;
+	/*color: white;*/
+	color: #1a62aa;
 }
 
 #nav-divider {
@@ -465,7 +611,7 @@ body {
 	border: none;
 	background-image: linear-gradient(to bottom right, #ddd, lightgrey);
 	border-radius: 4px;
-	margin: 18px;
+	margin: 12px;
 	font-weight: 700;
 	color: black;
 	box-shadow: 0 8px 6px -6px #ddd;
@@ -494,7 +640,6 @@ body {
 	height: 100%;
 	overflow-y: auto;
 	height: 100%; 
-	margin: 20px 0; 
 	padding-right: 12px;
 }
 
@@ -510,7 +655,7 @@ body {
 .table-box> table > tbody > tr > td {
 	vertical-align: inherit !important;
 	word-wrap: break-word !important;
-	padding: 8px 2px !important;
+	padding: 4px 2px !important;
 }
 
 .table-box> table > tbody > tr {
@@ -559,10 +704,53 @@ th, td {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-weight: 700;
+	font-weight: 400;
 	font-size: 18px;
 	padding: 10px 0;
 	color: gray;
+}
+
+.header-title-att {
+	width: 100%;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-weight: 400;
+	font-size: 18px;
+	padding: 10px 0;
+	color: gray;
+}
+
+.header-title-att > div {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-right: 12px;
+	cursor: pointer;
+	color: #3486eb !important;
+	width: 145.82px;
+}
+
+.header-title-att > div > div {
+	font-size: 14px !important;
+	margin-left: 6px;
+	width: 104.83px;
+}
+
+.header-title-att > span + span + span {
+	
+	width: 150px !important;
+}
+
+.header-title-att > span + span + span > i {
+	transition: transform .15s ease-in-out;
+}
+
+.header-title-att > span + span + span:active {
+	i {
+		transform: rotate(180deg);
+	}
 }
 
 .titleSite {
@@ -575,11 +763,26 @@ th, td {
 }
 
 #logoGDF {
-	height: 50px;
+	height: 40px;
 	margin-left: 14px;
 }
 
 /* ============== RESPONSIVIDADE =============== */
+
+@media only screen and (max-width: 1400px) {
+	.age-com {
+		flex-direction: column !important;
+	}
+	
+	.middle-age-com-right, .middle-age-com-left {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.middle-age-com-right {
+		margin-top: 20px;
+	}
+}
 
 /* TABLET */
 @media only screen and (max-width: 1100px) {
@@ -607,10 +810,6 @@ th, td {
 	
 	.info-circle > span + span {
 		font-size: 30px;
-	}
-	
-	#kpi-df-novos-casos {
-		font-size: 12px;
 	}
 	
 	.table-box> table > tbody > tr > td {
@@ -648,7 +847,8 @@ th, td {
 @media only screen and (max-width: 900px) {
 
 	.content-ng {
-		flex-direction: column;
+		/*flex-direction: column;*/
+		flex-wrap: wrap;
 	}
 	
 	.content-left, .content-middle, .content-right {
@@ -685,8 +885,9 @@ th, td {
 		justify-content: flex-end;
 	}
 	
-	#mapa-df-01, #chart-df-02, #chart-df-age {
+	#chart-df-age {
 		height: 300px !important;
+		padding: 0 40px;
 	}
 	
 	.mapa > div + div {
@@ -719,6 +920,54 @@ th, td {
 	#loading > div > span {
 		font-size: 18px;
 	}
+	
+	.content-middle > div:nth-child(3) {
+		height: auto !important;
+	}
+	
+	#mobile-header, #mobile-title {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 24px;
+	}
+	
+	#update-date {
+		display: none;
+	}
+	
+	#kpi-df-total-casos-p, #kpi-df-total-hospitalizados-p {
+		font-size: 20px !important;
+	}
+	
+	.middle-age-com-left-box {
+		flex-direction: column;
+	}
+	
+	.middle-age-com-left-box > div {
+		width: 100%;
+		padding: 0 40px;
+	}
+	
+	.info-age {
+		padding: 0 14px;
+	}
+	
+	content-middle > div:nth-child(3) > div:nth-child(2) {
+		padding: 0 !important;
+	}
+	
+	.content-right > div > div.info-value {
+		display: none;
+	}
+	
+	#novos-casos-mob {
+		display: flex;
+	}
+	
+	.content-left > div > div:nth-child(3) > div {
+		margin-bottom: 20px;
+	}
 }
 
 @media only screen and (max-width: 414px) {
@@ -728,6 +977,18 @@ th, td {
 	
 	.menu > div {
 		width: 100%;
+	}
+	
+	#loading > div > span {
+		font-size: 16px;
+	}
+	
+	
+}
+
+@media only screen and (min-width: 415px) {
+	#mobile-title {
+		display: none;
 	}
 }
 

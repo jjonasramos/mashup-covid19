@@ -1,35 +1,52 @@
 <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
 
 <div class="content-left">
+	
+	
+
 	<div class="info card-custom">
+		<div class="mapa headerT" id="mobile-title">
+			Painel COVID-19 no Distrito Federal
+		</div>
+		<div class="mapa headerT" id="mobile-header">
+			Atualizado em {{ reloadTime }}
+		</div>
 		<div class="info-value">
 			<div class="info-circle">
 				<span>Casos</span>
 				<span  id="kpi-df-total-casos">-</span>
-
-				<div id="novos-casos" style="visibility: hidden;">
-					<span id="kpi-df-novos-casos" style="font-size: 20px;"></span>
+				
+				
+				<div id="novos-casos-mob">
+					<span id="kpi-df-novos-casos-mob" style="font-size: 24px;">-</span>
 					<span style="margin: 0 12px 0 6px;">novos casos</span>
 					<i class="fas fa-sort-up fa-vc"></i>
 					<span id="kpi-df-total-casos-p">-</span>
 				</div>
+				
 			</div>
 		</div>
 		
+		<!--
 		<div class="divisor">
 			<span></span>
 		</div>
-
-
+		
+		
+		<div class="forma-testagem">
+			<span>Estado de saúde</span>
+		</div>
+		-->
+		
 		<div class="info-group-health">
-			<div ng-click="selectKPIValue(0, 'Cura')">
+			<div ng-click="selectKPIValue(1, 'Curado')">
 				<div class="info-group-health-v">
 					<span id="kpi-df-recuperado" class="green">-</span>
 				</div>
 				
 				<div class="info-health">
 					<div class="info-health-values">
-						<span>Recuperado</span>
+						<span>Recuperados</span>
 						<span id="kpi-df-recuperado-p">-</span>
 					</div>
 					<div class="info-health-bar">
@@ -37,8 +54,9 @@
 					</div>
 				</div>
 			</div>
+			
 
-			<div ng-click="selectKPIValue(0, 'Óbito')">
+			<div ng-click="selectKPIValue(1, 'Óbito')">
 				<div class="info-group-health-v">
 					<span id="kpi-df-obito" class="black">-</span>
 				</div>
@@ -46,7 +64,7 @@
 				<div class="info-health">
 					
 					<div class="info-health-values">
-						<span>Óbito</span>
+						<span>Óbitos</span>
 						<span id="kpi-df-obito-p">-</span>
 					</div>
 					<div class="info-health-bar">
@@ -54,60 +72,82 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-		<div class="divisor">
-			<span></span>
-		</div>
-
-		<div class="info-group-health">
-			<div ng-click="selectKPIValue(1, 'Grave')">
+			
+			<div ng-click="selectKPIValue(1, ['Grave', 'Moderado', 'Leve', 'Não Informado'])">
 				<div class="info-group-health-v">
-					<span id="kpi-df-grave" class="red">-</span>
+					<span id="kpi-df-ativos" class="red">-</span>
 				</div>
 				
 				<div class="info-health">
 					
 					<div class="info-health-values">
-						<span>Grave</span>
+						<span>Ativos</span>
+						<span id="kpi-df-ativos-p">-</span>
+					</div>
+					<div class="info-health-bar">
+						<div id="info-bar-ativos" class="red-bar"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="divisor">
+			<span></span>
+		</div>
+		
+		<div class="titulo-secao">
+			<span>Casos Ativos</span>
+		</div>
+		
+		<div class="info-group-health">
+			<div ng-click="selectKPIValue(1, 'Grave')">
+				<div class="info-group-health-v">
+					<span id="kpi-df-grave" class="gray">-</span>
+				</div>
+				
+				<div class="info-health">
+					
+					<div class="info-health-values">
+						<span>Graves</span>
 						<span id="kpi-df-grave-p">-</span>
 					</div>
 					<div class="info-health-bar">
-						<div id="info-bar-grave" class="red-bar"></div>
+						<div id="info-bar-grave" class="gray-bar"></div>
 					</div>
 				</div>
 			</div>
 
 			<div ng-click="selectKPIValue(1, 'Moderado')">
 				<div class="info-group-health-v">
-					<span id="kpi-df-moderado" class="orange">-</span>
+					<span id="kpi-df-moderado" class="gray">-</span>
 				</div>
 				
 				<div class="info-health">
 					
 					<div class="info-health-values">
-						<span>Moderado</span>
+						<span>Moderados</span>
 						<span id="kpi-df-moderado-p">-</span>
 					</div>
 					<div class="info-health-bar">
-						<div id="info-bar-moderado" class="orange-bar"></div>
+						<div id="info-bar-moderado" class="gray-bar"></div>
 					</div>
 				</div>
 			</div>
 			
 			<div ng-click="selectKPIValue(1, 'Leve')">
 				<div class="info-group-health-v">
-					<span id="kpi-df-leve" class="blue">-</span>
+					<span id="kpi-df-leve" class="gray">-</span>
 				</div>
 				
 				<div class="info-health">
 					
 					<div class="info-health-values">
-						<span>Leve</span>
+						<span>Leves</span>
 						<span id="kpi-df-leve-p">-</span>
 					</div>
 					<div class="info-health-bar">
-						<div id="info-bar-leve" class="blue-bar"></div>
+						<div id="info-bar-leve" class="gray-bar"></div>
 					</div>
 				</div>
 			</div>
@@ -129,96 +169,370 @@
 				</div>
 			</div>
 		</div>
-
-
+		
 		<div class="divisor">
 			<span></span>
 		</div>
+		
+		<div class="titulo-secao">
+			<span>Óbitos</span>
+		</div>
+		
+		<div class="info-group-health">
+			<div ng-click="selectKPIValue(7, 'DF')">
+				<div class="info-group-health-v">
+					<span id="kpi-df-df" class="gray">-</span>
+				</div>
+				
+				<div class="info-health">
+					
+					<div class="info-health-values">
+						<span>DF</span>
+						<span id="kpi-df-df-p">-</span>
+					</div>
+					<div class="info-health-bar">
+						<div id="info-bar-df" class="gray-bar"></div>
+					</div>
+				</div>
+			</div>
 
-		<div class="info-value">
+			<div ng-click="selectKPIValue(7, 'Outros Estados')">
+				<div class="info-group-health-v">
+					<span id="kpi-df-outros-estados" class="gray">-</span>
+				</div>
+				
+				<div class="info-health">
+					
+					<div class="info-health-values">
+						<span>Outros estados</span>
+						<span id="kpi-df-outros-estados-p">-</span>
+					</div>
+					<div class="info-health-bar">
+						<div id="info-bar-outros-estados" class="gray-bar"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="divisor">
+			<span></span>
+		</div>
+		
+		<div class="titulo-secao">
+			<span>Formas de Testagem</span>
+		</div>
+		
+		
+		<div class="info-group-health">
+			<div ng-click="selectKPIValue('pcr', 'SIM')">
+				<div class="info-group-health-v">
+					<span id="kpi-df-pcr" class="gray">-</span>
+				</div>
+				
+				<div class="info-health">
+					<div class="info-health-values">
+						<span>PCR</span>
+						<span id="kpi-df-pcr-p">-</span>
+					</div>
+					<div class="info-health-bar">
+						<div id="info-bar-pcr" class="gray-bar"></div>
+					</div>
+				</div>
+			</div>
+
+			<div ng-click="selectKPIValue('rapida', 'SIM')">
+				<div class="info-group-health-v">
+					<span id="kpi-df-rapida" class="gray">-</span>
+				</div>
+				
+				<div class="info-health">
+					
+					<div class="info-health-values">
+						<span>Rápida</span>
+						<span id="kpi-df-rapida-p">-</span>
+					</div>
+					<div class="info-health-bar">
+						<div id="info-bar-rapida" class="gray-bar"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--
+		<div class="divisor">
+			<span></span>
+		</div>
+		
+		
+		<div class="info-value" ng-click="selectKPIValue('hospital', 'Hospital')" style="cursor: pointer;">
 			<div class="info-circle">
-				<span>Hospitalizados</span>
+				 <span>Hospitalizados</span>
 				<span  id="kpi-df-total-hospitalizados">-</span>
+
 				<div>
 					<i class="fas" ng-class="{'fa-sort-up fa-vc' :  hosp_p, 'fa-sort-down fa-vc-down' : !hosp_p }"></i>
 					<span id="kpi-df-total-hospitalizados-p">-</span>
 				</div>
 			</div>
 		</div>
-		
+		-->
+		<!--
 		<div class="divisor">
 			<span></span>
 		</div>
+		-->
 
-
-		<div class="info-group-health">
-			<div ng-click="selectKPIValue(2, 'UTI')">
-				<div class="info-group-health-v">
-					<span id="kpi-df-uti" class="red">-</span>
-				</div>
-				
-				<div class="info-health">
-					
-					<div class="info-health-values">
-						<span>UTI</span>
-						<span id="kpi-df-uti-p">-</span>
-					</div>
-					<div class="info-health-bar">
-						<div id="info-bar-uti" class="red-bar"></div>
-					</div>
-				</div>
-			</div>
-
-			<div ng-click="selectKPIValue(2, 'Enfermaria')">
-				<div class="info-group-health-v">
-					<span id="kpi-df-enfermaria" class="blue">-</span>
-				</div>
-				
-				<div class="info-health">
-					
-					<div class="info-health-values">
-						<span>Enfermaria</span>
-						<span id="kpi-df-enfermaria-p">-</span>
-					</div>
-					<div class="info-health-bar">
-						<div id="info-bar-enfermaria" class="blue-bar"></div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 
 	</div>
 </div>
 
-<div class="content-middle">
+<div class="content-middle flexcroll">
 	<div class="mapa card-custom">
-		<div class="header-title">
-			{{ taxaRA ? 'Taxa 100mil/hab' : 'Casos Confirmados' }}
+		<div class="header-title-att">
+			<span style="width: 145.82px;"></span>
+			<span id="update-date">Atualizado em {{ reloadTime }}</span>
+			
+			<div ng-click="setVariableMap()">
+				<span><i class="fas fa-sync-alt" style="margin-right: 5px;"></i></span>
+				<div>
+					Alternar para <br> {{taxaRA ? 'Taxa 100mil/hab' : 'Casos RA'}}
+				</div>
+			</div>
+			
 		</div>
-
-		<div  style="height: 100%; width: 100%; padding: 20px 20px 0 20px;">
-			<div id="mapa-df-01" style="height: 100%; width: 100%;">Carregando...</div>
-		</div>
-
-		<div>
-			<button class="button btn-active" ng-click="setVariableMap()">{{taxaRA ? 'Casos RA' : 'Taxa RA'}}</button>
+		<div  style="height: 400px; width: 100%; padding: 0px 20px 0 20px;">
+			<div id="mapa-df-01" style="height: 100% !important; width: 100%;">Carregando...</div>
 		</div>
 	</div>
+	
+	<div class="mapa card-custom ">
+		<div class="header-title">
+			Perfil dos pacientes
+		</div>
+		<div class="age-com">
+			<div class="middle-age-com-left">
+				<div class="info-age">
+					<img src="https://covid19.ssp.df.gov.br/content/Imagens/man_grey.png" ng-click="selectKPIValue(3, 'Masculino')" style="cursor: pointer" />
+					<div>
+						<div ng-click="selectKPIValue(3, 'Masculino')" style="cursor: pointer">
+							<span id="kpi-df-homem">-</span>
+							<span id="kpi-df-homem-percent">-</span>
+						</div>
+						<div ng-click="selectKPIValue(3, 'Feminino')" style="cursor: pointer">
+							<span id="kpi-df-mulher">-</span>
+							<span id="kpi-df-mulher-percent">-</span>
+						</div>
+					</div>
+					<img src="https://covid19.ssp.df.gov.br/content/Imagens/woman_grey.png" ng-click="selectKPIValue(3, 'Feminino')" style="cursor: pointer" />
+				</div>
 
+				<div class="divisor">
+					<span></span>
+				</div>
+
+				<div style="height: 70%">
+					<div id="chart-df-age" style="height: 100%">Carregando...</div>
+				</div>
+			</div>
+
+			<div class="middle-age-com-right">
+				<div class="middle-age-com-right-img" ng-click="selectKPIValue(5, 'all')">
+					<img src="https://covid19.ssp.df.gov.br/content/Imagens/heart.png" alt="com" height="40px">
+					<div>
+						<span id="kpi-df-comor">-</span>
+						<span id="kpi-df-comor-p">-</span>
+					</div>
+				</div>
+
+				<!--
+				<div class="forma-testagem">
+					<span>Comorbidades</span>
+				</div>
+				-->
+
+				<div class="middle-age-com-left-box">
+					<div>
+
+						<div class="info-group-health">
+							<div ng-click="selectKPIValue('cardio', 'Sim')">
+								<div class="info-group-health-v">
+									<span id="kpi-df-cardio" class="red">-</span>
+								</div>
+
+								<div class="info-health">
+									<div class="info-health-values">
+										<span>Cardio</span>
+										<span id="kpi-df-cardio-p">-</span>
+									</div>
+									<div class="info-health-bar">
+										<div id="info-bar-cardio" class="red-bar"></div>
+									</div>
+								</div>
+							</div>
+
+							<div ng-click="selectKPIValue('meta', 'Sim')">
+								<div class="info-group-health-v">
+									<span id="kpi-df-metabolico" class="red">-</span>
+								</div>
+
+								<div class="info-health">
+
+									<div class="info-health-values">
+										<span>Metabólico</span>
+										<span id="kpi-df-metabolico-p">-</span>
+									</div>
+									<div class="info-health-bar">
+										<div id="info-bar-metabolico" class="red-bar"></div>
+									</div>
+								</div>
+							</div>
+
+							<div ng-click="selectKPIValue('pneumo', 'Sim')">
+								<div class="info-group-health-v">
+									<span id="kpi-df-pneumo" class="red">-</span>
+								</div>
+
+								<div class="info-health">
+
+									<div class="info-health-values">
+										<span>Pneumopatia</span>
+										<span id="kpi-df-pneumo-p">-</span>
+									</div>
+									<div class="info-health-bar">
+										<div id="info-bar-pneumo" class="red-bar"></div>
+									</div>
+								</div>
+							</div>
+
+							<div ng-click="selectKPIValue('imuno', 'Sim')">
+								<div class="info-group-health-v">
+									<span id="kpi-df-imuno" class="red">-</span>
+								</div>
+
+								<div class="info-health">
+
+									<div class="info-health-values">
+										<span>Imunopressão</span>
+										<span id="kpi-df-imuno-p">-</span>
+									</div>
+									<div class="info-health-bar">
+										<div id="info-bar-imuno" class="red-bar"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div>
+
+						<div class="info-group-health">
+							<div ng-click="selectKPIValue('nefro', 'Sim')">
+								<div class="info-group-health-v">
+									<span id="kpi-df-nefropatia" class="red">-</span>
+								</div>
+
+								<div class="info-health">
+									<div class="info-health-values">
+										<span>Nefropatia</span>
+										<span id="kpi-df-nefropatia-p">-</span>
+									</div>
+									<div class="info-health-bar">
+										<div id="info-bar-nefropatia" class="red-bar"></div>
+									</div>
+								</div>
+							</div>
+
+							<div ng-click="selectKPIValue('obe', 'Sim')">
+								<div class="info-group-health-v">
+									<span id="kpi-df-obesidade" class="red">-</span>
+								</div>
+
+								<div class="info-health">
+
+									<div class="info-health-values">
+										<span>Obesidade</span>
+										<span id="kpi-df-obesidade-p">-</span>
+									</div>
+									<div class="info-health-bar">
+										<div id="info-bar-obesidade" class="red-bar"></div>
+									</div>
+								</div>
+							</div>
+
+							<div ng-click="selectKPIValue('hemato', 'Sim')">
+								<div class="info-group-health-v">
+									<span id="kpi-df-hemato" class="red">-</span>
+								</div>
+
+								<div class="info-health">
+
+									<div class="info-health-values">
+										<span>Hematológica</span>
+										<span id="kpi-df-hemato-p">-</span>
+									</div>
+									<div class="info-health-bar">
+										<div id="info-bar-hemato" class="red-bar"></div>
+									</div>
+								</div>
+							</div>
+
+							<div ng-click="selectKPIValue('outros', 'Sim')">
+								<div class="info-group-health-v">
+									<span id="kpi-df-c_outros" class="red">-</span>
+								</div>
+
+								<div class="info-health">
+
+									<div class="info-health-values">
+										<span>Outros</span>
+										<span id="kpi-df-c_outros-p">-</span>
+									</div>
+									<div class="info-health-bar">
+										<div id="info-bar-c_outros" class="red-bar"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
 	<div class="mapa card-custom">
 		<div class="header-title">
 			Evolução de casos
 		</div>
-		<div  style="height: 100%; width: 100%; padding: 0 40px;">
-			<div id="chart-df-02" style="height: 100%; width: 100%;">Carregando...</div>
+		<div  style="min-height: 400px; width: 100%; padding: 0 40px;">
+			<div id="chart-df-02" style="height: 400px; width: 100%;">Carregando...</div>
 		</div>
 	</div>
 </div>
 
 <div class="content-right">
 	<div class="info card-custom">
+	
+		<div class="info-value" style="cursor: pointer">
+			<div class="info-circle" ng-click="selectKPIValue(6, 'all')">
+				<span>Novos casos</span>
+				<span  id="kpi-df-novos-casos" class="red">-</span>
+
+				<!--
+				<div id="novos-casos" style="visibility: hidden;">
+					<span id="kpi-df-novos-casos" style="font-size: 24px;"></span>
+					<span style="margin: 0 12px 0 6px;">novos casos</span>
+					<i class="fas fa-sort-up fa-vc"></i>
+					<span id="kpi-df-total-casos-p">-</span>
+				</div>
+				-->
+			</div>
+		</div>
 		
-		<div class="table-box">
+		<div class="table-box flexcroll">
 			<table class="sortable table table-responsive table-fixed">
 			  <tr>
 				<th align="center" class="sorttable_numeric">Casos</th>
@@ -228,7 +542,7 @@
 				<th align="center">RA</th>
 			  </tr>
 
-			  <tr class="item" ng-repeat="x in dataSet | orderBy: '-Casos'">
+			  <tr class="item" ng-repeat="x in dataSet | orderBy: '-Casos'" ng-click="selectKPIValue('RA', x.RA)" style="cursor: pointer">
 				<td align="center">{{ x.Casos }}</td>
 				<td align="center"><i class="fas fa-sort-up fa-vc" ng-show="x.Check_casos"></i></td>
 				<td align="center">{{ x.Taxa }}</td>
@@ -238,7 +552,9 @@
 
 			</table>
 		</div>
-			
+		
+		<!--
+		
 		<div class="divisor">
 			<span></span>
 		</div>
@@ -265,5 +581,7 @@
 		<div style="height: 100%">
 			<div id="chart-df-age" style="height: 100%">Carregando...</div>
 		</div>
+		
+		-->
 	</div>
 </div>
